@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head ng-app="CsvApp">
+    <meta charset="UTF-8">
+    <title>CSV</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--link href="bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet">
+    <style>
+
+        .input-field .prefix.active { color: #fd9267; }
+
+        input:focus:not([readonly]) {
+            border-bottom: 1px solid #fd9267 !important;
+            -webkit-box-shadow: 0 1px 0 0 #fd9267 !important;
+            box-shadow: 0 1px 0 0 #fd9267 !important; }
+
+        input:focus:not([readonly]) + label { color: #4f4f4f !important; }
+
+        .header {
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem; }
+
+        .peach-gradient {
+            background: -webkit-linear-gradient(50deg,#FFD86F,#FC6262);
+            background: linear-gradient(40deg,#FFD86F,#FC6262);
+            min-height: 110px;
+            padding: 10px;
+        }
+
+        .xs-color {
+            background: -webkit-linear-gradient(50deg,#FFD86F,#FC6262);
+            background: linear-gradient(40deg,#FFD86F,#FC6262);
+        }
+
+        .xs-down {
+            margin-top: 20px;
+        }
+
+        form.card {
+            padding: 20px !important;
+        }
+    </style -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/app.constants.js"></script>
+    <script src="js/app.factory.js"></script>
+    <script src="js/app.controller.js"></script>
+
+</head>
+<body>
+
+<div ng-controller="CsvController">
+    <nav class="nav-wrapper xs-color">
+        <h3 class="center white-text">{{ title }}</h3>
+    </nav>
+
+    <!--div class="container col m6">
+        <section class="row">
+            <form class="card form-gradient" method="post" id="form_csv" ng-submit="createUser()" name="form">
+                <!div class="card">
+                    <div class="header peach-gradient">
+                        <div class="container">
+                            <h3 class="white-text center">Add User</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name" name="name" class="validate" type="text" ng-model="newUser.name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">map</i>
+                    <input id="address" name="address" class="validate" type="text" ng-model="newUser.address">
+                    <label for="address">Address</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="tel" name="phone" class="validate" type="tel" ng-model="newUser.phone">
+                    <label for="tel">Phone</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" name="email" class="validate" type="email" ng-model="newUser.email">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+                <div class="input-field">
+                    <button class="btn btn-flat waves-effect waves-light right">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- div>
+        <ul class="collection" ng-repeat="user in users | orderBy: 'name'">
+            <li class="collection-item avatar">
+                <!img src="#" alt="" class="circle">
+                <span class="title">{{ user.name }}</span>
+                <p>Address: {{ user.address }} <br />
+                    Phone: {{ user.phone }} <br />
+                    Email: {{ user.email }}
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        </ul>
+    </div -->
+</div>
+
+<!--script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/materialize/dist/js/materialize.min.js"></script-->
+
+</body>
+</html>
+

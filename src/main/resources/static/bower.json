@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "authors": [
+    "Gabriel Cesar <gcal1@live.com>"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.6",
+    "materialize": "^0.100.1"
+  }
+}
