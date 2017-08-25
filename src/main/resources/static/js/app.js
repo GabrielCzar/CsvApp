@@ -1,3 +1,3 @@
 (function(){
-    angular.module('CsvApp', []);
+    angular.module('CsvApp', ['ui.router']);
 })();

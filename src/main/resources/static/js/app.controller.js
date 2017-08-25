@@ -1,28 +1,42 @@
 (function(){
     angular
         .module('CsvApp')
-        .controller('CsvController', function ($scope, Users) {
-            this.title = "Csv Users";
-            this.users = [];
-            this.newUser = {};
+        .controller('UsersController', function($scope, UsersFactory, $state) {
+            $scope.title = "Add User";
 
-            var loadView = function () {
-                Users.list().then(function (result) {
+            $scope.users = [];
+
+            $scope.newUser = {};
+
+            $scope.loadUsers = function () {
+                UsersFactory.list().then(function (result) {
                     angular.forEach(result.data, function (user) {
-                        this.users.push(user);
+                        $scope.users.push(user);
                     });
                 });
             };
 
-            this.createUser = function () {
+            $scope.resetForm = function () {
+                this.form.$setPristine();
+                this.form.$setUntouched();
+                $scope.newUser = {};
+            };
+
+            $scope.createUser = function () {
                 this.form.$setDirty;
 
                 if (this.form.$invalid) return;
 
-                Users.create(newUser).then(loadView());
-                this.newUser = {};
+                UsersFactory.create($scope.newUser).then($scope.clearUsers());
+
             };
 
-            loadView();
+            $scope.clearUsers = function () {
+                $scope.users.push($scope.newUser);
+                $scope.resetForm();
+                $state.reload;
+            }
+
+            $scope.loadUsers();
         });
 })();

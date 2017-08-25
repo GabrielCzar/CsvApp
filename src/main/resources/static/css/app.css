@@ -1,0 +1,32 @@
+.input-field .prefix.active { color: #fd9267; }
+
+input:focus:not([readonly]) {
+    border-bottom: 1px solid #fd9267 !important;
+    -webkit-box-shadow: 0 1px 0 0 #fd9267 !important;
+    box-shadow: 0 1px 0 0 #fd9267 !important; }
+input:focus:not([readonly]) + label { color: #4f4f4f !important; }
+
+.header {
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem; }
+
+.peach-gradient {
+    background: -webkit-linear-gradient(50deg,#FFD86F,#FC6262);
+    background: linear-gradient(40deg,#FFD86F,#FC6262);
+    min-height: 110px;
+    padding: 10px;
+}
+
+.xs-color {
+    background: -webkit-linear-gradient(50deg,#FFD86F,#FC6262);
+    background: linear-gradient(40deg,#FFD86F,#FC6262);
+}
+
+.xs-down {
+    margin-top: 20px;
+}
+
+.xs-dist {
+    padding: 20px;
+    margin: 20px;
+}

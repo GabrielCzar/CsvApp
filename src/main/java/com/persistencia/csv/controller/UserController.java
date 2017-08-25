@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(@ModelAttribute("user") User user) {
+    public ResponseEntity<?> createUser(@RequestBody User user) {
         csvViewResolver.addUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

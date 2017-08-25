@@ -3,6 +3,8 @@ package com.persistencia.csv.model;
 public class User {
     private String name, address, phone, email;
 
+    public User () {}
+
     public User (String name, String address, String phone, String email) {
         this.name = name;
         this.address = address;
