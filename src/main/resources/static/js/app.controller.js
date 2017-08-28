@@ -1,15 +1,18 @@
 (function(){
     angular
         .module('CsvApp')
-        .controller('UsersController', function($scope, UsersFactory, $state, $http) {
-
-            $scope.token = "";
-
+        .controller('UsersController', function($scope, UsersFactory, $http, $sce) {
             $scope.title = "Add User";
 
             $scope.users = [];
 
             $scope.newUser = {};
+
+            $scope.feedback = "";
+
+            var feedbackHTML =  function (message, cor) {
+                return "<div id='feedback' class='chip " + cor + " lighten-2 alert'><h6 class='white-text center'>" + message + "</h6></div>";
+            };
 
             $scope.loadUsers = function () {
                 UsersFactory.list().then(function (result) {
@@ -20,30 +23,43 @@
             };
 
             $scope.resetForm = function () {
-                this.form.$setPristine();
-                this.form.$setUntouched();
+                $scope.form.$setPristine();
+                $scope.form.$setUntouched();
                 $scope.newUser = {};
             };
 
             $scope.createUser = function () {
-                this.form.$setDirty;
+                $scope.form.$setDirty;
 
                 if (this.form.$invalid) return;
 
-                UsersFactory.create($scope.newUser).then($scope.clearUsers());
+                UsersFactory.create($scope.newUser).then(function () {
+                    $scope.feedback =  $sce.trustAsHtml(feedbackHTML("Success! User inserted!", 'green'));
+                    clearFeedback();
+                    clearUsers()
+                }).catch(function () {
+                    $scope.feedback =  $sce.trustAsHtml(feedbackHTML("Error! User don't inserted!", 'red'));
+                    clearFeedback();
+                });
 
             };
 
-            $scope.clearUsers = function () {
+            var clearFeedback = function () {
+                setTimeout(function () {
+                    $scope.feedback = "";
+                    var elmn = angular.element( document.querySelector( '#feedback' ) );
+                    elmn.remove();
+                }, 3000);
+            };
+
+            var clearUsers = function () {
                 $scope.users.push($scope.newUser);
                 $scope.resetForm();
-                $state.reload;
-            }
+            };
 
-            if ($scope.token === "") {
+            if ($http.defaults.headers.common.Authorization === undefined) {
                 UsersFactory.login().then(function(res) {
-                    $scope.token = res.headers('Authorization');
-                    $http.defaults.headers.common.Authorization = $scope.token;
+                    $http.defaults.headers.common.Authorization = res.headers('Authorization');
                     $scope.loadUsers();
                 });
             } else {
