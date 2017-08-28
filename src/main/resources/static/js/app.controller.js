@@ -1,7 +1,10 @@
 (function(){
     angular
         .module('CsvApp')
-        .controller('UsersController', function($scope, UsersFactory, $state) {
+        .controller('UsersController', function($scope, UsersFactory, $state, $http) {
+
+            $scope.token = "";
+
             $scope.title = "Add User";
 
             $scope.users = [];
@@ -37,6 +40,15 @@
                 $state.reload;
             }
 
-            $scope.loadUsers();
+            if ($scope.token === "") {
+                UsersFactory.login().then(function(res) {
+                    $scope.token = res.headers('Authorization');
+                    $http.defaults.headers.common.Authorization = $scope.token;
+                    $scope.loadUsers();
+                });
+            } else {
+                $scope.loadUsers();
+            }
+
         });
 })();

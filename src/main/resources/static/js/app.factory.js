@@ -1,16 +1,18 @@
 angular.module('CsvApp')
-    .factory('UsersFactory', function ($http){
-        var url = 'http://localhost:8080/api/users';
+    .factory('UsersFactory', function ($http, URLS, USER){
         return {
+            login: function () {
+                return $http.post('/login', USER);
+            },
             list : function (){
                 return $http({
                     method: 'get',
                     dataType: 'JSONP',
-                    url: url
+                    url: URLS.API
                 })
             },
             create : function (user) {
-                return $http.post(url, user);
+                return $http.post(URLS.API, user);
             }
         };
     });
