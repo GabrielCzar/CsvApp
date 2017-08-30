@@ -18,10 +18,8 @@ public class CsvViewResolver {
     private String line = "";
     private Path path;
 
-
     CsvViewResolver() {
         this.path = getDefault().getPath(System.getenv("HOME"));
-        //System.out.println("CONSTRUCTOR: " + path.toAbsolutePath());
         //this.is = CsvViewResolver.class.getClassLoader().getResourceAsStream(CSVfile);
     }
 

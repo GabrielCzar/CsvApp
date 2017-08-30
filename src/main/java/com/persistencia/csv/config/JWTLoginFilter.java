@@ -3,7 +3,6 @@ package com.persistencia.csv.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.persistencia.csv.model.AccountCredentials;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,12 +24,11 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         setAuthenticationManager(authManager);
 
     }
-    @Override
 
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
         try {
-
             AccountCredentials credentials = new ObjectMapper()
                     .readValue(request.getInputStream(), AccountCredentials.class);
 

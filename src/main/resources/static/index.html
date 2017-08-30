@@ -18,28 +18,28 @@
             <div class="peach-gradient header">
                 <h3 class="white-text">{{ title }}</h3>
             </div>
-            <form name="form" ng-submit="createUser()">
+            <form name="form">
                 <div class="input-field col m6 s12">
-                    <input id="name" name="name" type="text" ng-model="newUser.name" class="validate" required="true">
+                    <input id="name" type="text" ng-model="user.name" class="validate" required="true">
                     <label for="name">Name</label>
                 </div>
                 <div class="input-field col m6 s12">
-                    <input id="address" name="address" type="text" ng-model="newUser.address" class="validate" required="true">
+                    <input id="address" type="text" ng-model="user.address" class="validate" required="true">
                     <label for="address">Address</label>
                 </div>
                 <div class="input-field col m6 s12">
-                    <input id="phone" name="phone" type="tel" ng-model="newUser.phone" class="validate" required="true">
+                    <input id="phone" type="tel" ng-model="user.phone" class="validate" required="true">
                     <label for="phone">Phone</label>
                 </div>
                 <div class="input-field col m6 s12">
-                    <input id="email" name="email" type="email" ng-model="newUser.email" class="validate" required="true">
+                    <input id="email" type="email" ng-model="user.email" class="validate" required="true">
                     <label for="email" data-error="wrong" data-success="right">Email</label>
                 </div>
                 <div class="input-field col m12 s12">
                     <!-- FEEDBACK MESSAGE -->
                     <div ng-bind-html="feedback"></div>
                     <!-- END FEEDBACK -->
-                    <button class="btn blue right xs-separate">Add</button>
+                    <button class="btn blue right xs-separate" ng-click="createUser(user)">Add</button>
                     <button type="reset" class="btn btn-flat right xs-separate">Reset</button>
                 </div>
             </form>
